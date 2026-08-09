@@ -1,0 +1,532 @@
+/* ========================= */
+/* RESET */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+    font-family:"Mali",sans-serif;
+}
+
+/* ========================= */
+/* พื้นหลัง */
+/* ========================= */
+
+.background{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
+    z-index:-10;
+}
+
+/* ========================= */
+/* กรอบใหญ่ */
+/* ========================= */
+
+.worksheet-frame{
+    position:absolute;
+    width:1700px;
+    left:50%;
+    top:52%;
+    transform:translate(-50%,-50%);
+}
+
+/* ========================= */
+/* ป้ายหัวข้อ */
+/* ========================= */
+
+.title-board{
+    position:absolute;
+    width:750px;
+    left:50%;
+    top:-100px;
+    transform:translateX(-50%);
+}
+
+.title-text{
+
+    position:absolute;
+
+    left:50%;
+
+    top:95px;
+
+    transform:translateX(-50%);
+
+    width:700px;
+
+    text-align:center;
+
+    white-space:nowrap;
+
+    font-size:40px;
+
+    font-weight:bold;
+
+    color:#ffffff;
+
+    text-shadow:3px 3px 6px rgba(0,0,0,.35);
+
+}
+
+/* ========================= */
+/* ริบบิ้น */
+/* ========================= */
+
+.ribbon{
+    position:absolute;
+    width:700px;
+    left:50%;
+    top:-5px;
+    transform:translateX(-50%);
+}
+
+.ribbon-text{
+
+    position:absolute;
+
+    width:350px;
+
+    left:50%;
+
+    top:81px;
+
+    transform:translateX(-50%);
+
+}
+
+/* ========================= */
+/* กรอบข้อความ */
+/* ========================= */
+
+.text-frame{
+
+    position:absolute;
+
+    width:1080px;
+
+    left:50%;
+
+    top:20px;
+
+    transform:translateX(-50%);
+
+}
+
+.question-title{
+
+    position:absolute;
+
+    width:680px;
+
+    left:50%;
+
+    top:90px;
+
+    transform:translateX(-50%);
+
+}
+
+.sample-text{
+
+    position:absolute;
+
+    left:50%;
+
+    top:305px;
+
+    transform:translateX(-50%);
+
+    width:760px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#5B3A1C;
+
+}
+
+/* ========================= */
+/* ข้อความหัวข้อ (รูปภาพ) */
+/* ========================= */
+
+.worksheet-title{
+
+    position:absolute;
+
+    width:550px;
+
+    left:49%;
+
+    top:-38px;
+
+    transform:translateX(-50%);
+
+}
+
+/* ========================= */
+/* เวลา */
+/* ========================= */
+
+.timer-frame{
+
+    position:absolute;
+
+    width:340px;
+
+    left:50%;
+
+    top:327px;
+
+    transform:translateX(-50%);
+
+}
+
+.clock{
+
+    position:absolute;
+
+    width:122px;
+
+    left:calc(50% - 135px);
+
+    top:390px;
+
+}
+
+.timer{
+
+    position:absolute;
+
+    width:140px;
+
+    left:51.5%;
+
+    top:406px;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+
+}
+
+.timer span{
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    color:#f3f3f3;
+
+}
+
+/* ========================= */
+/* กล่องพิมพ์ */
+/* ========================= */
+
+.typing-box{
+
+    position:absolute;
+
+    width:760px;
+
+    left:48%;
+
+    top:325px;
+
+    transform:translateX(-50%);
+
+}
+
+.typing-input{
+
+    position:absolute;
+
+    width:690px;
+
+    height:110px;
+
+    left:50%;
+
+    top:485px;
+
+    transform:translateX(-50%);
+
+    border:none;
+
+    resize:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:20px;
+
+    font-family:"Mali";
+
+    color:#5b3a1c;
+
+    text-align:center;
+
+    line-height:1.9;
+
+}
+
+/* ========================= */
+/* ปุ่ม */
+/* ========================= */
+
+.btn-check{
+
+    position:absolute;
+
+    width:420px;
+
+    left:calc(50% - 230px);
+
+    top:555px;
+
+    bottom:-45px;
+
+    cursor:pointer;
+
+}
+
+.check-text{
+
+    position:absolute;
+
+    width:165px;
+
+    left:50%;
+
+    top:65%;
+
+    transform:translate(-50%,-50%);
+
+    pointer-events:none;
+
+}
+
+.check-text{
+
+    position:absolute;
+
+    width:348px;
+
+    left:50.2%;
+
+    top:92%;
+
+    transform:translate(-50%,-50%);
+
+    pointer-events:none;
+
+}
+
+.explorer_character{
+
+    position:absolute;
+
+    width:750px;
+
+    right:-90px;
+
+    bottom:-47px;
+
+}
+
+/* =========================================
+   หน้ากรอกข้อมูลนักเรียน
+========================================= */
+
+.student-info{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,0.35);
+
+    z-index:1000;
+
+}
+
+
+/* =========================================
+   กล่องข้อมูล
+========================================= */
+
+.student-info-box{
+
+    width:420px;
+
+    padding:35px 40px;
+
+    background:#FFF7E6;
+
+    border:5px solid #C89B5B;
+
+    border-radius:30px;
+
+    box-shadow:
+        0 10px 0 #8E6033,
+        0 15px 25px rgba(0,0,0,0.3);
+
+    text-align:center;
+
+    font-family:"Mali",sans-serif;
+
+}
+
+
+/* =========================================
+   หัวข้อ
+========================================= */
+
+.student-info-box h2{
+
+    margin:0 0 25px;
+
+    font-size:30px;
+
+    color:#6B4323;
+
+}
+
+
+/* =========================================
+   ป้ายกำกับ
+========================================= */
+
+.student-info-box label{
+
+    display:block;
+
+    text-align:left;
+
+    margin:12px 0 5px;
+
+    font-size:21px;
+
+    font-weight:700;
+
+    color:#6B4323;
+
+}
+
+
+/* =========================================
+   ช่องกรอก
+========================================= */
+
+.student-info-box input{
+
+    width:100%;
+
+    height:52px;
+
+    padding:8px 15px;
+
+    border:3px solid #D6B77A;
+
+    border-radius:15px;
+
+    background:#FFFFFF;
+
+    font-family:"Mali",sans-serif;
+
+    font-size:20px;
+
+    color:#6B4323;
+
+    outline:none;
+
+}
+
+
+/* ตอนคลิกช่อง */
+
+.student-info-box input:focus{
+
+    border-color:#9B6B35;
+
+}
+
+
+/* =========================================
+   ปุ่มเริ่มทำใบงาน
+========================================= */
+
+#startWorksheet{
+
+    margin-top:25px;
+
+    width:100%;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#8FBC65;
+
+    box-shadow:
+        0 6px 0 #5D853C;
+
+    color:white;
+
+    font-family:"Mali",sans-serif;
+
+    font-size:23px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+/* hover */
+
+#startWorksheet:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* กด */
+
+#startWorksheet:active{
+
+    transform:translateY(4px);
+
+    box-shadow:
+        0 2px 0 #5D853C;
+
+}

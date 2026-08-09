@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ใบงานนักพิมพ์คนเก่ง</title>
+
+    <link rel="stylesheet" href="worksheet.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ========================= -->
+<!-- ข้อมูลนักเรียน -->
+<!-- ========================= -->
+
+<div id="studentInfo" class="student-info">
+
+    <div class="student-info-box">
+
+        <h2>ข้อมูลนักเรียน</h2>
+
+        <label for="studentNumber">
+            เลขที่
+        </label>
+
+        <input
+            type="number"
+            id="studentNumber"
+            placeholder="กรอกเลขที่"
+            min="1"
+        >
+
+        <label for="studentClass">
+            ชั้น
+        </label>
+
+        <input
+            type="text"
+            id="studentClass"
+            placeholder="เช่น ป.3/1"
+        >
+
+        <button
+            type="button"
+            id="startWorksheet"
+        >
+            เริ่มทำใบงาน
+        </button>
+
+    </div>
+
+</div>
+
+    <!-- ========================= -->
+    <!-- พื้นหลัง -->
+    <!-- ========================= -->
+
+    <img
+        src="images/Backgrounds.png"
+        class="background"
+        alt=""
+    >
+
+
+    <!-- ========================= -->
+    <!-- กรอบใหญ่ -->
+    <!-- ========================= -->
+
+    <img
+        src="images/worksheet_frame.png"
+        class="worksheet-frame"
+        alt=""
+    >
+
+
+    <!-- ========================= -->
+    <!-- ป้ายหัวข้อ -->
+    <!-- ========================= -->
+
+    <img
+        src="images/title_board.png"
+        class="title-board"
+        alt=""
+    >
+
+    <img
+        src="images/worksheet_title.png"
+        class="worksheet-title"
+        alt="ใบงานนักพิมพ์คนเก่ง"
+    >
+
+
+    <!-- ========================= -->
+   <!-- ริบบิ้น -->
+<img
+    src="images/btn_ribbon.png"
+    class="ribbon"
+    alt=""
+>
+
+<img
+    src="images/ribbon_text.png"
+    class="ribbon-text"
+    alt=""
+>
+
+
+    <!-- ========================= -->
+    <!-- กรอบข้อความ -->
+    <!-- ========================= -->
+
+    <img
+        src="images/text_frame.png"
+        class="text-frame"
+        alt=""
+    >
+
+
+    <!-- ========================= -->
+    <!-- หัวข้อโจทย์ -->
+    <!-- ========================= -->
+
+    <img
+        src="images/question_title.png"
+        class="question-title"
+        alt="ให้นักเรียนพิมพ์ข้อความต่อไปนี้ให้ถูกต้อง"
+    >
+
+
+    <!-- ========================= -->
+    <!-- ข้อความตัวอย่าง -->
+    <!-- ========================= -->
+
+    <div
+        id="targetText"
+        class="sample-text"
+    >
+        วันนี้คุณครูพานักเรียนไปเรียนรู้การใช้แป้นพิมพ์<br>
+        ทุกคนตั้งใจฝึกพิมพ์ และช่วยกันทำกิจกรรมจนสำเร็จ
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- กล่องเวลา -->
+    <!-- ========================= -->
+
+    <img
+        src="images/timer_frame.png"
+        class="timer-frame"
+        alt=""
+    >
+
+    <img
+        src="images/clock.png"
+        class="clock"
+        alt=""
+    >
+
+    <div class="timer">
+        <span id="timer">เวลา 00:00</span>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- ช่องพิมพ์ -->
+    <!-- ========================= -->
+
+    <img
+        src="images/typing_box.png"
+        class="typing-box"
+        alt=""
+    >
+
+    <textarea
+        id="typingInput"
+        class="typing-input"
+        placeholder="พิมพ์ข้อความที่นี่..."
+        spellcheck="false"
+    ></textarea>
+
+
+    <!-- ========================= -->
+    <!-- ปุ่มตรวจคำตอบ -->
+    <!-- ========================= -->
+
+    <img
+        src="images/btn_check.png"
+        class="btn-check"
+        alt="ตรวจคำตอบ"
+        onclick="checkAnswer()"
+    >
+
+    <img
+        src="images/check_text.png"
+        class="check-text"
+        alt=""
+    >
+
+
+    <!-- ========================= -->
+    <!-- ตัวละคร -->
+    <!-- ========================= -->
+
+    <img
+        src="images/explorer_character.png"
+        class="explorer_character"
+        alt=""
+    >
+
+
+    <!-- ========================= -->
+    <!-- JavaScript -->
+    <!-- ========================= -->
+
+    <script src="worksheet.js"></script>
+
+</body>
+
+</html>

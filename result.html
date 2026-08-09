@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ผลการฝึกพิมพ์</title>
+
+    <link
+        rel="stylesheet"
+        href="result.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================= -->
+    <!-- พื้นหลัง -->
+    <!-- ========================= -->
+
+    <img
+        src="images/Backgrounds.png"
+        class="background"
+        alt=""
+    >
+
+
+    <!-- ========================= -->
+    <!-- หน้าผลลัพธ์ -->
+    <!-- ========================= -->
+
+    <main class="result-page">
+
+
+        <!-- ========================= -->
+        <!-- หัวข้อ -->
+        <!-- ========================= -->
+
+        <img
+            src="images/result_title.png"
+            class="result-title"
+            alt="ผลการฝึกพิมพ์"
+        >
+
+        <!-- ริบบิ้น -->
+<img
+    src="images/btn_ribbon.png"
+    class="ribbon"
+    alt=""
+>
+
+<!-- ข้อความบนริบบิ้น -->
+<img
+    src="images/result_ribbon.png"
+    class="ribbon-text"
+    alt=""
+>
+
+
+        <!-- ========================= -->
+        <!-- การ์ดผลลัพธ์ -->
+        <!-- ========================= -->
+
+        <section class="result-cards">
+
+
+            <!-- เวลา -->
+
+            <div class="result-card">
+
+                <img
+                    src="images/clock_icon.png"
+                    class="result-icon"
+                    alt=""
+                >
+
+                <div class="result-label">
+                    เวลาที่ใช้
+                </div>
+
+                <div
+                    id="timeResult"
+                    class="result-value"
+                >
+                    00:00
+                </div>
+
+                <div class="result-unit">
+                    วินาที
+                </div>
+
+            </div>
+
+
+            <!-- ความถูกต้อง -->
+
+<div class="result-card">
+
+    <img
+        src="images/mistake_icon.png"
+        class="result-icon"
+        alt=""
+    >
+
+    <div class="result-label">
+        ความถูกต้อง
+    </div>
+
+    <div
+        id="accuracyResult"
+        class="result-value accuracy"
+    >
+        0%
+    </div>
+
+</div>
+
+
+<!-- ตัวอักษรผิด -->
+
+<div class="result-card">
+
+    <img
+        src="images/target_icon.png"
+        class="result-icon"
+        alt=""
+    >
+
+    <div class="result-label">
+        พิมพ์ผิด
+    </div>
+
+    <div
+        id="mistakeResult"
+        class="result-value"
+    >
+        0
+    </div>
+
+    <div class="result-unit">
+        ตัวอักษร
+    </div>
+
+</div>
+
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- ระดับผลการพิมพ์ -->
+        <!-- ========================= -->
+
+        <div class="performance-box">
+
+            <img
+                src="images/star_icon.png"
+                class="star-icon"
+                alt=""
+            >
+
+            <span class="performance-label">
+                ระดับผลการพิมพ์
+            </span>
+
+            <span
+                id="performanceResult"
+                class="performance-value"
+            >
+                ยอดเยี่ยม
+            </span>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- ตัวละคร -->
+        <!-- ========================= -->
+
+        <img
+            src="images/result_character.png"
+            class="result-character"
+            alt=""
+        >
+
+
+        <!-- ========================= -->
+        <!-- ปุ่มลองอีกครั้ง -->
+        <!-- ========================= -->
+
+        <button
+    class="try-again-button"
+    onclick="tryAgain()"
+>
+
+    <img
+        src="images/btn_reset.png"
+        class="try-again-bg"
+        alt=""
+    >
+
+    <img
+        src="images/try_again.png"
+        class="try-again-text"
+        alt="ลองอีกครั้ง"
+    >
+
+</button>
+
+    </main>
+
+
+    <script src="result.js"></script>
+
+</body>
+
+</html>
