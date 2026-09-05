@@ -160,7 +160,7 @@ body{
 
 
 /* =========================================
-   การ์ด 3 ใบ
+   กล่องผลลัพธ์ 4 กล่อง
 ========================================= */
 
 .result-cards{
@@ -172,13 +172,15 @@ body{
 
     transform:translateX(-50%);
 
-    width:950px;
+    width:1480px;
 
     display:flex;
 
-    justify-content:space-between;
+    justify-content:center;
 
-    gap:35px;
+    align-items:stretch;
+
+    gap:20px;
 
 }
 
@@ -552,5 +554,279 @@ body{
     transform:
         translateX(-50%)
         scale(0.97);
+
+    
+}
+
+/* =========================================
+   กล่องตรวจคำผิด
+   อยู่ด้านขวาของการ์ดผลลัพธ์
+========================================= */
+
+/* =========================================
+   กล่องตรวจคำผิด
+========================================= */
+
+.correction-box{
+
+    position:relative;
+
+    width:320px;
+    min-height:310px;
+
+    padding:25px 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff8e9,
+            #f8e9c9
+        );
+
+    border:3px solid #D6B77A;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 8px 0 #9B6B35,
+        0 12px 20px rgba(70,40,15,0.3);
+
+    text-align:center;
+
+    z-index:10;
+
+    box-sizing:border-box;
+
+    flex-shrink:0;
+
+}
+
+
+/* =========================================
+   หัวข้อกล่องตรวจคำผิด
+========================================= */
+
+.correction-title{
+
+    font-family:"Mali",sans-serif;
+
+    font-size:25px;
+
+    font-weight:700;
+
+    color:#6B4323;
+
+    margin-bottom:20px;
+
+}
+
+
+/* =========================================
+   รายการคำผิด
+========================================= */
+
+.correction-result{
+
+    font-family:"Mali",sans-serif;
+
+    font-size:21px;
+
+    line-height:1.8;
+
+    color:#6B4323;
+
+}
+
+
+/* =========================================
+   แต่ละรายการ
+========================================= */
+
+.wrong-word-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin:8px 0;
+
+    flex-wrap:wrap;
+
+}
+
+
+/* =========================================
+   ลำดับ
+========================================= */
+
+.wrong-number{
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   คำที่พิมพ์ผิด
+========================================= */
+
+.wrong-text{
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   ลูกศร
+========================================= */
+
+.arrow{
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   คำที่ถูก
+========================================= */
+
+.correct-text{
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   กรณีพิมพ์ถูกทั้งหมด
+========================================= */
+
+.correct-message{
+
+    font-family:"Mali",sans-serif;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#4B9E28;
+
+    margin-top:25px;
+
+}
+
+/* =========================================
+   พิมพ์ผิด X ตัวอักษร
+========================================= */
+
+.mistake-summary {
+
+    font-family:"Mali",sans-serif;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    color:#6B4323;
+
+    margin-top:5px;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================
+   คำผิด
+========================================= */
+
+.correction-result {
+
+    width:100%;
+
+    margin-top:15px;
+
+    font-family:"Mali",sans-serif;
+
+    font-size:21px;
+
+    line-height:1.6;
+
+    color:#6B4323;
+
+    text-align:center;
+
+}
+
+
+/* =========================================
+   แต่ละคำ
+========================================= */
+
+.wrong-word-row {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin:5px 0;
+
+}
+
+
+/* คำที่พิมพ์ผิด */
+
+.wrong-text {
+
+    font-weight:700;
+
+}
+
+
+/* ลูกศร */
+
+.arrow {
+
+    font-weight:700;
+
+}
+
+
+/* คำที่ถูก */
+
+.correct-text {
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   พิมพ์ถูกทั้งหมด
+========================================= */
+
+.correct-message {
+
+    font-family:"Mali",sans-serif;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#4B9E28;
+
+    margin-top:15px;
 
 }

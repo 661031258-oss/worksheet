@@ -1,11 +1,47 @@
 /* =========================================
-   ผลการฝึกพิมพ์
-   แสดงผล + ส่งข้อมูลเข้า Google Sheets
+   หน้าผลการฝึกพิมพ์
 ========================================= */
 
 
 /* =========================================
-   รับค่าจากหน้า result.html
+   ดึงข้อมูลผลการพิมพ์
+========================================= */
+
+const typingTime =
+    sessionStorage.getItem("typingTime") || "00:00";
+
+const typingAccuracy =
+    Number(
+        sessionStorage.getItem("typingAccuracy") || 0
+    );
+
+const typingMistakes =
+    Number(
+        sessionStorage.getItem("typingMistakes") || 0
+    );
+
+
+/* =========================================
+   ดึงข้อมูลคำที่พิมพ์ผิด
+========================================= */
+
+let wrongWords = [];
+
+try {
+
+    wrongWords = JSON.parse(
+        sessionStorage.getItem("wrongWords") || "[]"
+    );
+
+} catch (error) {
+
+    wrongWords = [];
+
+}
+
+
+/* =========================================
+   DOM
 ========================================= */
 
 const timeResult =
@@ -14,305 +50,249 @@ const timeResult =
 const accuracyResult =
     document.getElementById("accuracyResult");
 
-const mistakeResult =
-    document.getElementById("mistakeResult");
+const mistakeSummary =
+    document.getElementById("mistakeSummary");
 
 const performanceResult =
     document.getElementById("performanceResult");
 
-
-/* =========================================
-   ดึงข้อมูลผลการพิมพ์
-========================================= */
-
-const time =
-    sessionStorage.getItem("typingTime") || "00:00";
-
-const accuracy =
-    Number(
-        sessionStorage.getItem("typingAccuracy") || 0
-    );
-
-const mistakes =
-    Number(
-        sessionStorage.getItem("typingMistakes") || 0
-    );
+const correctionResult =
+    document.getElementById("correctionResult");
 
 
 /* =========================================
-   ดึงข้อมูลนักเรียน
+   แสดงเวลา
 ========================================= */
 
-const studentNumber =
-    sessionStorage.getItem("studentNumber") || "";
-
-const studentClass =
-    sessionStorage.getItem("studentClass") || "";
-
-
-/* =========================================
-   แสดงผลบนหน้าผลลัพธ์
-========================================= */
-
-if(timeResult){
+if (timeResult) {
 
     timeResult.textContent =
-        time;
-
-}
-
-
-if(accuracyResult){
-
-    accuracyResult.textContent =
-        accuracy + "%";
-
-}
-
-
-if(mistakeResult){
-
-    mistakeResult.textContent =
-        mistakes;
+        typingTime;
 
 }
 
 
 /* =========================================
-   คำนวณระดับผลการพิมพ์
+   แสดงความถูกต้อง
 ========================================= */
 
-function getPerformance(accuracy){
+if (accuracyResult) {
 
-    if(accuracy >= 95){
+    accuracyResult.textContent =
+        typingAccuracy + "%";
+
+}
+
+
+/* =========================================
+   แสดงจำนวนตัวอักษรที่ผิด
+========================================= */
+
+if (mistakeSummary) {
+
+    mistakeSummary.textContent =
+        "พิมพ์ผิด " +
+        typingMistakes +
+        " ตัวอักษร";
+
+}
+
+
+/* =========================================
+   ระดับผลการพิมพ์
+========================================= */
+
+function getPerformance(accuracy) {
+
+    if (accuracy >= 90) {
 
         return "ยอดเยี่ยม";
 
     }
 
-    else if(accuracy >= 85){
+    if (accuracy >= 80) {
 
         return "ดีมาก";
 
     }
 
-    else if(accuracy >= 70){
+    if (accuracy >= 70) {
 
         return "ดี";
 
     }
 
-    else{
+    if (accuracy >= 60) {
 
-        return "พยายามอีกนิด";
+        return "พอใช้";
 
     }
+
+    return "ควรฝึกเพิ่มเติม";
 
 }
 
 
-const performance =
-    getPerformance(accuracy);
+/* =========================================
+   แสดงระดับผลการพิมพ์
+========================================= */
 
-
-if(performanceResult){
+if (performanceResult) {
 
     performanceResult.textContent =
-        performance;
+        getPerformance(
+            typingAccuracy
+        );
 
 }
 
 
 /* =========================================
-   URL ของ Google Apps Script
+   แสดงคำผิด
 ========================================= */
 
-const GOOGLE_SHEET_URL =
-    "https://script.google.com/macros/s/AKfycbx9I_ZFIZR6SF3KDDpmrqtCm7EeIy_9a8ZFHK-imxfy2BP988GwYOYMjkR5dlj4eyK0/exec";
+function showWrongWords() {
 
-
-/* =========================================
-   ส่งข้อมูลเข้า Google Sheets
-========================================= */
-
-function sendResultToGoogleSheet(){
-
-    /*
-       ป้องกันการส่งข้อมูลซ้ำ
-       กรณีผู้ใช้กดรีเฟรชหน้าผลลัพธ์
-    */
-
-    const alreadySent =
-        sessionStorage.getItem(
-            "typingResultSent"
-        );
-
-
-    if(alreadySent === "true"){
-
+    if (!correctionResult) {
         return;
-
     }
 
 
-    /*
-       ถ้ายังไม่มีเลขที่หรือชั้น
-       จะไม่ส่งข้อมูล
-    */
+    /* -------------------------------------
+       ไม่มีคำผิด
+    ------------------------------------- */
 
-    if(
-        studentNumber === "" ||
-        studentClass === ""
-    ){
+    if (
+        wrongWords.length === 0
+    ) {
 
-        console.warn(
-            "ไม่พบข้อมูลเลขที่หรือชั้น"
-        );
+        correctionResult.innerHTML = `
+            <div class="correct-message">
+                ✓ พิมพ์ถูกต้องทั้งหมด
+            </div>
+        `;
 
         return;
-
     }
 
 
-    /*
-       เตรียมข้อมูล
-    */
+    /* -------------------------------------
+       สร้างรายการคำผิด
+    ------------------------------------- */
 
-    const formData =
-        new URLSearchParams();
-
-
-    formData.append(
-        "studentNumber",
-        studentNumber
-    );
+    let html = "";
 
 
-    formData.append(
-        "className",
-        studentClass
-    );
+    wrongWords.forEach(
+        function(item) {
 
+            /*
+               ถ้ามีข้อมูลคำผิด
+               แสดงเฉพาะคำ
+            */
 
-    formData.append(
-        "typingTime",
-        time
-    );
+            html += `
+                <div class="wrong-word-row">
 
+                    <span class="wrong-text">
+                        ${escapeHTML(item.typed)}
+                    </span>
 
-    formData.append(
-        "accuracy",
-        accuracy + "%"
-    );
+                    <span class="arrow">
+                        →
+                    </span>
 
+                    <span class="correct-text">
+                        ${escapeHTML(item.correct)}
+                    </span>
 
-    formData.append(
-        "mistakes",
-        mistakes
-    );
+                </div>
+            `;
 
-
-    formData.append(
-        "performance",
-        performance
-    );
-
-
-    /*
-       ส่งข้อมูลไป Google Apps Script
-    */
-
-    fetch(
-        GOOGLE_SHEET_URL,
-        {
-            method: "POST",
-
-            mode: "no-cors",
-
-            headers:{
-                "Content-Type":
-                    "application/x-www-form-urlencoded;charset=UTF-8"
-            },
-
-            body:
-                formData.toString()
         }
-    )
-    .then(function(){
-
-        /*
-           บันทึกว่าส่งข้อมูลแล้ว
-        */
-
-        sessionStorage.setItem(
-            "typingResultSent",
-            "true"
-        );
+    );
 
 
-        console.log(
-            "ส่งข้อมูลเข้า Google Sheets แล้ว"
-        );
-
-    })
-    .catch(function(error){
-
-        console.error(
-            "ไม่สามารถส่งข้อมูลไป Google Sheets ได้:",
-            error
-        );
-
-    });
+    correctionResult.innerHTML =
+        html;
 
 }
 
 
 /* =========================================
-   ส่งข้อมูลเมื่อเปิดหน้าผลลัพธ์
+   ป้องกัน HTML
 ========================================= */
 
-sendResultToGoogleSheet();
+function escapeHTML(text) {
+
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================
+   แสดงคำผิดทันที
+========================================= */
+
+showWrongWords();
 
 
 /* =========================================
    ปุ่มลองอีกครั้ง
 ========================================= */
 
-function tryAgain(){
-
-    /*
-       ลบข้อมูลผลลัพธ์เดิม
-    */
-
-    sessionStorage.removeItem(
-        "typingTime"
-    );
-
-    sessionStorage.removeItem(
-        "typingAccuracy"
-    );
-
-    sessionStorage.removeItem(
-        "typingMistakes"
+const tryAgainButton =
+    document.getElementById(
+        "tryAgainButton"
     );
 
 
-    /*
-       ลบข้อมูลสถานะการส่ง
-       เพื่อให้การทำครั้งใหม่
-       สามารถส่งเข้า Google Sheets ได้อีกครั้ง
-    */
+if (tryAgainButton) {
 
-    sessionStorage.removeItem(
-        "typingResultSent"
+    tryAgainButton.addEventListener(
+        "click",
+        function() {
+
+            /* ล้างผลการพิมพ์รอบก่อน */
+
+            sessionStorage.removeItem(
+                "typingTime"
+            );
+
+            sessionStorage.removeItem(
+                "typingAccuracy"
+            );
+
+            sessionStorage.removeItem(
+                "typingMistakes"
+            );
+
+            sessionStorage.removeItem(
+                "wrongWords"
+            );
+
+            sessionStorage.removeItem(
+                "targetText"
+            );
+
+            sessionStorage.removeItem(
+                "typedText"
+            );
+
+
+            /*
+               กลับไปหน้า index.html
+            */
+
+            window.location.href =
+                "index.html";
+
+        }
     );
-
-
-    /*
-       กลับไปหน้าใบงาน
-    */
-
-    window.location.href =
-        "index.html";
 
 }

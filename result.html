@@ -56,19 +56,25 @@
             alt="ผลการฝึกพิมพ์"
         >
 
-        <!-- ริบบิ้น -->
-<img
-    src="images/btn_ribbon.png"
-    class="ribbon"
-    alt=""
->
 
-<!-- ข้อความบนริบบิ้น -->
-<img
-    src="images/result_ribbon.png"
-    class="ribbon-text"
-    alt=""
->
+        <!-- ========================= -->
+        <!-- ริบบิ้น -->
+        <!-- ========================= -->
+
+        <img
+            src="images/btn_ribbon.png"
+            class="ribbon"
+            alt=""
+        >
+
+
+        <!-- ข้อความบนริบบิ้น -->
+
+        <img
+            src="images/result_ribbon.png"
+            class="ribbon-text"
+            alt=""
+        >
 
 
         <!-- ========================= -->
@@ -78,7 +84,9 @@
         <section class="result-cards">
 
 
+            <!-- ========================= -->
             <!-- เวลา -->
+            <!-- ========================= -->
 
             <div class="result-card">
 
@@ -106,31 +114,35 @@
             </div>
 
 
+            <!-- ========================= -->
             <!-- ความถูกต้อง -->
+            <!-- ========================= -->
 
-<div class="result-card">
+            <div class="result-card">
 
-    <img
-        src="images/mistake_icon.png"
-        class="result-icon"
-        alt=""
-    >
+                <img
+                    src="images/mistake_icon.png"
+                    class="result-icon"
+                    alt=""
+                >
 
-    <div class="result-label">
-        ความถูกต้อง
-    </div>
+                <div class="result-label">
+                    ความถูกต้อง
+                </div>
 
-    <div
-        id="accuracyResult"
-        class="result-value accuracy"
-    >
-        0%
-    </div>
+                <div
+                    id="accuracyResult"
+                    class="result-value accuracy"
+                >
+                    0%
+                </div>
 
-</div>
+            </div>
 
 
-<!-- ตัวอักษรผิด -->
+           <!-- ========================= -->
+<!-- พิมพ์ผิด -->
+<!-- ========================= -->
 
 <div class="result-card">
 
@@ -140,22 +152,22 @@
         alt=""
     >
 
-    <div class="result-label">
-        พิมพ์ผิด
+    <div
+        id="mistakeSummary"
+        class="mistake-summary"
+    >
+        พิมพ์ผิด 0 ตัวอักษร
     </div>
 
     <div
-        id="mistakeResult"
-        class="result-value"
-    >
-        0
-    </div>
+        id="correctionResult"
+        class="correction-result"
+    ></div>
 
-    <div class="result-unit">
-        ตัวอักษร
-    </div>
 
 </div>
+
+            </div>
 
 
         </section>
@@ -203,23 +215,24 @@
         <!-- ========================= -->
 
         <button
-    class="try-again-button"
-    onclick="tryAgain()"
->
+            class="try-again-button"
+            onclick="tryAgain()"
+        >
 
-    <img
-        src="images/btn_reset.png"
-        class="try-again-bg"
-        alt=""
-    >
+            <img
+                src="images/btn_reset.png"
+                class="try-again-bg"
+                alt=""
+            >
 
-    <img
-        src="images/try_again.png"
-        class="try-again-text"
-        alt="ลองอีกครั้ง"
-    >
+            <img
+                src="images/try_again.png"
+                class="try-again-text"
+                alt="ลองอีกครั้ง"
+            >
 
-</button>
+        </button>
+
 
     </main>
 
